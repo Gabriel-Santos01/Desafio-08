@@ -1,0 +1,282 @@
+:root {
+  font-size: 62.5%;
+  --text-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'inter', sans-serif;
+  color: var(--text-color);
+
+  display: grid;
+  width: 113vw;
+  height: 113vh;
+
+  background: #1e1e1e;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+span {
+  font-size: 1.2rem;
+}
+
+.fit span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 160%;
+}
+
+h3 {
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+.fit p {
+  color: #81fbb8;
+}
+
+.card p {
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+
+.fit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: fit-content;
+  text-align: center;
+}
+
+.goal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.satisfaction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+  margin-inline: auto;
+  max-width: 130rem;
+
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  flex: 1 0 min(90%, min(100%, 20rem));
+  padding: 2.9rem 4.8rem;
+  border-radius: 1.6rem;
+  background: #363447;
+  position: relative;
+}
+
+.donutGraph {
+  position: absolute;
+  z-index: 1;
+  top: 23%;
+  left: 29%;
+}
+
+.donutGraph svg {
+  --percentage: 0;
+  width: 19.7rem;
+  height: 19.7rem;
+  transform: rotate(-90deg);
+}
+
+.donutGraph svg circle {
+  stroke-dasharray: 618;
+  stroke-dashoffset: 618;
+  stroke-width: 35;
+  fill: none;
+}
+
+.donutGraph svg circle:nth-child(1) {
+  stroke-dasharray: 0;
+}
+
+.donutGraph svg circle:nth-child(2) {
+  stroke-dashoffset: calc(618 - (618 * var(--percentage)) / 100);
+  stroke-linecap: round;
+
+  animation: progress 1s ease-in-out;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 618;
+    stroke-dashoffset: 618;
+  }
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+.week-sells {
+  display: flex;
+  flex-direction: column;
+}
+
+.graphBar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+
+  gap: calc(3vw + 1rem);
+  width: min(100%, 87rem);
+
+  position: relative;
+}
+
+.graphBar::before {
+  content: '';
+  display: block;
+  height: 0.3rem;
+  width: 100%;
+  background: #4a4556;
+  border-radius: 99.9rem;
+  position: absolute;
+  top: 69%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.graphBar .wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.box {
+  margin-block: 6rem;
+}
+
+.bar {
+  --height: 0;
+  width: 1.5rem;
+  height: var(--height);
+  background: linear-gradient(180deg, #90f7ec 0%, #32ccbc 100%);
+  border-radius: 99999px;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 3rem 2rem;
+  }
+
+  .donutGraph {
+    top: 34%;
+    left: 9%;
+  }
+
+  .month-goals h2 {
+    height: 7.67rem;
+  }
+
+  .week-sells {
+    flex-direction: row;
+  }
+
+  .bar {
+    width: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+    padding: 8rem 6rem;
+  }
+
+  .week-sells {
+    justify-content: space-between;
+  }
+
+  .card {
+    flex: 1 0 min(90%, 26rem);
+  }
+
+  .fit span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .donutGraph {
+    top: 30%;
+    left: 15%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .card {
+    flex: 1 0 min(90%, 32rem);
+  }
+
+  .month-goals h2 {
+    height: fit-content;
+  }
+
+  .donutGraph {
+    top: min(39%, 10rem);
+    left: min(25%, 100%);
+  }
+}
+
+@media (min-width: 1920px) {
+  main {
+    max-height: 90rem;
+  }
+
+  .donutGraph {
+    top: min(39%, 12rem);
+    left: min(25%, 100%);
+  }
+
+  .graphBar span {
+    font-size: 1.6rem;
+  }
+}
