@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="" target = "_blank">
-  <img src=".github/preview.jpg" width="100%">
+  <img src=".github/preview.png" width="100%">
   </a>
 </p>
 
